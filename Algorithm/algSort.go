@@ -29,6 +29,17 @@ func partition(arr []int, low, high int) int {
 	return i + 1
 }
 
-func quickSort() {
+/* The main function that implements QuickSort
+arr[] --> Array to be sorted,
+low --> Starting index,
+high --> Ending index */
+func QuickSort(arr []int, low, high int) {
+	var (
+		pi int = partition(arr, low, high)
+	)
 
+	if low < high {
+		QuickSort(arr, low, pi-1)
+		QuickSort(arr, pi+1, high)
+	}
 }
