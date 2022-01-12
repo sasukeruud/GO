@@ -34,11 +34,11 @@ arr[] --> Array to be sorted,
 low --> Starting index,
 high --> Ending index */
 func QuickSort(arr []int, low, high int) {
-	var (
-		pi int = partition(arr, low, high)
-	)
-
 	if low < high {
+		var (
+			pi int = partition(arr, low, high)
+		)
+
 		QuickSort(arr, low, pi-1)
 		QuickSort(arr, pi+1, high)
 	}

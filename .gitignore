@@ -1,2 +1,5 @@
 #ignores all .exe files
 *.exe
+
+#Mapper som blir ignorert
+\.idea

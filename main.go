@@ -1,8 +1,11 @@
 package main
 
 import (
-	"Algorithm/algSort"
 	"fmt"
+	//"math/rand"
+
+	algSort "github.com/sasukeruud/GO/Algorithm"
+	//test "github.com/sasukeruud/GO/HelloWorld"
 )
 
 var (
@@ -10,20 +13,28 @@ var (
 )
 
 func fillArray(arr []int) {
-	for i := 0; i < len(arr); i++ {
-		arr[i] = rand.int
+	var (
+		number int = 100
+	)
+	for i := 0; i < len(arr)-1; i++ {
+		arr[i] = number
+
+		number--
 	}
 }
 
 func writeArray(arr []int) {
-	for i := 0; i < len(arr); i++ {
-		fmt.Println(arr[i], " ")
+	for i := 0; i < len(arr)-1; i++ {
+		fmt.Println(arr[i], ":")
 	}
 }
 
 func main() {
-	fillArray()
-	writeArray(Array)
-	algSort.QuickSort(Array, 0, len(Array))
-	writeArray(Array)
+	fillArray(Array[:])
+	writeArray(Array[:])
+	fmt.Println("QuickSort")
+	algSort.QuickSort(Array[:], 0, len(Array)-1)
+	writeArray(Array[:])
+
+	fmt.Scanln()
 }
