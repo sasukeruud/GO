@@ -1,5 +1,3 @@
-module "github.com/sasukeruud/GO"
-
-require "github.com/sasukeruud/GO/Algorithm" v1.0.0
+module github.com/sasukeruud/GO
 
 go 1.17
