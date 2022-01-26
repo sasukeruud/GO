@@ -3,3 +3,6 @@
 
 #Mapper som blir ignorert
 \.idea
+
+#Spesific files to not upload
+main.go
