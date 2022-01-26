@@ -2,44 +2,42 @@ package algSort
 
 //"fmt"
 
+//"fmt"
+
 //Function to swap two int
 func swapInt(a, b int) {
-	var t int = a
+	t := a
 	a = b
 	b = t
 }
 
-/*
-* Partition function for quickSort
+/* Partition function for quickSort
+* From:: https://qvault.io/golang/quick-sort-golang/
  */
-func partition(arr []int, low, high int) int {
-	var (
-		piviot int = arr[high]
-		i      int = low - 1
-	)
-
-	for j := low; j <= high-1; j++ {
-		if arr[j] < piviot {
+func partition(arr []int, low, high int) ([]int, int) {
+	pivot := arr[high]
+	i := low
+	for j := low; j < high; j++ {
+		if arr[j] < pivot {
+			arr[i], arr[j] = arr[j], arr[i]
 			i++
-			swapInt(arr[i], arr[j])
 		}
 	}
-
-	swapInt(arr[i+1], arr[high])
-	return i + 1
+	arr[i], arr[high] = arr[high], arr[i]
+	return arr, i
 }
 
 /* The main function that implements QuickSort
-arr[] --> Array to be sorted,
-low --> Starting index,
-high --> Ending index */
-func QuickSort(arr []int, low, high int) {
+* arr[] --> Array to be sorted,
+* low --> Starting index,
+* high --> Ending index
+* From:: https://qvault.io/golang/quick-sort-golang/ */
+func QuickSort(arr []int, low, high int) []int {
 	if low < high {
-		var (
-			pi int = partition(arr, low, high)
-		)
-
-		QuickSort(arr, low, pi-1)
-		QuickSort(arr, pi+1, high)
+		var p int
+		arr, p = partition(arr, low, high)
+		arr = QuickSort(arr, low, p-1)
+		arr = QuickSort(arr, p+1, high)
 	}
+	return arr
 }
