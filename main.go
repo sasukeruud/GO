@@ -9,32 +9,54 @@ import (
 )
 
 var (
-	array [20]int
+	intArray [20]int
+	strArray [5]string
 )
 
-func fillArray(arr *[20]int) {
+func fillArrayINT(arr *[20]int) {
 	var (
-		number int = 99
+		number int = 100
 	)
-	for i := 0; i < len((*arr))-2; i++ {
+	for i := 0; i < len((*arr)); i++ {
 		(*arr)[i] = number
 
 		number--
 	}
 }
 
+func fillArraySTR(arr *[5]string) {
+	(*arr)[0] = "m"
+	(*arr)[1] = "v"
+	(*arr)[2] = "p"
+	(*arr)[3] = "w"
+	(*arr)[4] = "a"
+	//(*arr)[5] = "c"
+}
+
 func writeArray(arr [20]int) {
-	for i := 0; i < len(arr)-1; i++ {
+	for i := 0; i < len(arr); i++ {
+		fmt.Println(arr[i], ":")
+	}
+}
+
+func writeArraySTR(arr [5]string) {
+	for i := 0; i < len(arr); i++ {
 		fmt.Println(arr[i], ":")
 	}
 }
 
 func main() {
-	fillArray(&array)
-	writeArray(array)
+	fillArrayINT(&intArray)
+	writeArray(intArray)
 	fmt.Println("QuickSort")
-	algSort.QuickSort(array[:], 0, len(array)-1)
-	writeArray(array)
+	algSort.QuickSortINT(intArray[:], 0, len(intArray)-1)
+	writeArray(intArray)
+	fmt.Println("String array")
+	fillArraySTR(&strArray)
+	writeArraySTR(strArray)
+	algSort.QuickSortSTR(strArray[:], 0, len(strArray)-1)
+	fmt.Println("Sorted")
+	writeArraySTR(strArray)
 
 	fmt.Scanln()
 }
